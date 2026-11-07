@@ -8,6 +8,8 @@
 <meta property="og:title" content="Spazio Properties | Kozhikode">
 <meta property="og:description" content="Premium properties, trusted guidance. Finding spaces that feel right.">
 <meta property="og:image" content="spazio-14.jpg">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -21,6 +23,9 @@ img{display:block;max-width:100%}
 /* ===== fixed chrome ===== */
 .brand{position:fixed;top:28px;left:36px;z-index:50;display:flex;align-items:center;gap:12px}
 .brand-mark{width:50px;height:50px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.brand-mark img{width:24px;height:auto}
+.brand-word{height:26px;width:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.hero-mark{width:clamp(70px,7vw,104px);height:auto;margin:0 auto 26px;filter:drop-shadow(0 8px 30px rgba(0,0,0,.5))}
 .brand-txt b{display:block;font-weight:800;font-size:17px;letter-spacing:.22em;line-height:1}
 .brand-txt span{font-size:9px;letter-spacing:.45em;color:var(--muted)}
 .talk{position:fixed;top:32px;right:36px;z-index:50;padding:12px 22px;border-radius:40px;border:1px solid var(--line);background:rgba(10,10,11,.35);backdrop-filter:blur(10px);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:.3s}
@@ -153,7 +158,7 @@ footer a:hover{color:var(--y)}
 }
 @media(max-width:720px){
   .scene > .in-wrap{padding:0 22px}
-  .brand{top:18px;left:18px}.brand-mark{width:42px;height:42px}
+  .brand{top:18px;left:18px}.brand-mark{width:42px;height:42px}.brand-mark img{width:20px}.brand-word{height:20px}
   .talk{top:22px;right:18px;padding:10px 16px;font-size:10px}
   .dots{display:none}
   .svc{grid-template-columns:1fr;gap:40px}
@@ -171,9 +176,8 @@ footer a:hover{color:var(--y)}
 <body>
 
 <a href="#hero" class="brand" aria-label="Spazio Properties home">
-  <!-- Real logo: save it as logo.png and replace this SVG with <img src="logo.png" alt="Spazio Properties" width="36"> -->
-  <span class="brand-mark"><svg viewBox="0 0 100 100" width="32" height="32"><rect x="20" y="10" width="17" height="82" fill="#111"/><path d="M28 19h26a22 22 0 010 44H44" fill="none" stroke="#111" stroke-width="17"/><path d="M58 33c-6-4-14-1-13 5 1 7 14 5 14 12" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/></svg></span>
-  <span class="brand-txt"><b>SPAZIO</b><span>PROPERTIES</span></span>
+  <span class="brand-mark"><img src="logo-mark.png" alt=""></span>
+  <img class="brand-word" src="logo-word-white.png" alt="Spazio Properties">
 </a>
 <a href="#contact" class="talk">Let's talk</a>
 
@@ -193,8 +197,9 @@ footer a:hover{color:var(--y)}
 
 <!-- 1 HERO -->
 <section class="scene" id="hero">
-  <div class="bg" style="background-image:url('spazio-12.jpg');background-position:center 40%"></div>
+  <div class="bg" style="background-image:url('bg-12.jpg');background-position:center 40%"></div>
   <div class="in-wrap center">
+    <img class="hero-mark rv" src="logo-mark-white.png" alt="Spazio Properties logo">
     <span class="eyebrow rv">Premium Properties</span>
     <h1 class="mega rv d1" id="heroTitle">Spazio<br>Properties</h1>
   </div>
@@ -203,7 +208,7 @@ footer a:hover{color:var(--y)}
 
 <!-- 2 PROMISE -->
 <section class="scene" id="promise">
-  <div class="bg" style="background-image:url('spazio-10.jpg');background-position:center 35%"></div>
+  <div class="bg" style="background-image:url('bg-10.jpg');background-position:center 35%"></div>
   <div class="in-wrap center">
     <span class="eyebrow dim rv">Our Promise</span>
     <h2 class="big rv d1">Others sell <span class="yi">property</span>.<br>We find spaces that <span class="ul">feel right.</span></h2>
@@ -212,7 +217,7 @@ footer a:hover{color:var(--y)}
 
 <!-- 3 TAGLINE -->
 <section class="scene">
-  <div class="bg" style="background-image:url('spazio-11.jpg');background-position:center 45%"></div>
+  <div class="bg" style="background-image:url('bg-11.jpg');background-position:center 45%"></div>
   <div class="in-wrap center">
     <h2 class="big rv">Trusted guidance.</h2>
     <h2 class="big y rv d1">Prime locations.</h2>
@@ -222,7 +227,7 @@ footer a:hover{color:var(--y)}
 
 <!-- 4 ABOUT -->
 <section class="scene" id="about">
-  <div class="bg" style="background-image:url('spazio-12.jpg');background-position:center 48%"></div>
+  <div class="bg" style="background-image:url('bg-12.jpg');background-position:center 48%"></div>
   <div class="in-wrap">
     <span class="eyebrow rv">About Us</span>
     <h2 class="mega rv d1" style="font-size:clamp(50px,9vw,130px)">Beyond the<br>listing.</h2>
@@ -232,7 +237,7 @@ footer a:hover{color:var(--y)}
 
 <!-- 5 VALUES -->
 <section class="scene">
-  <div class="bg" style="background-image:url('spazio-11.jpg');background-position:center 15%"></div>
+  <div class="bg" style="background-image:url('bg-11.jpg');background-position:center 15%"></div>
   <div class="in-wrap right">
     <h2 class="big rv">Verified buyers.</h2>
     <h2 class="big yi rv d1">Trusted owners.</h2>
@@ -243,7 +248,7 @@ footer a:hover{color:var(--y)}
 
 <!-- 6 SERVICES -->
 <section class="scene darker" id="services">
-  <div class="bg" style="background-image:url('spazio-12.jpg');background-position:center 55%"></div>
+  <div class="bg" style="background-image:url('bg-12.jpg');background-position:center 55%"></div>
   <div class="in-wrap center">
     <span class="eyebrow rv">What We Do</span>
     <h2 class="big rv d1">Complete<br>property care.</h2>
@@ -258,7 +263,7 @@ footer a:hover{color:var(--y)}
 
 <!-- 7 PROJECTS -->
 <section class="scene darker" id="projects">
-  <div class="bg" style="background-image:url('spazio-12.jpg');background-position:center 25%"></div>
+  <div class="bg" style="background-image:url('bg-12.jpg');background-position:center 25%"></div>
   <div class="in-wrap center">
     <span class="eyebrow rv">Featured Projects</span>
     <h2 class="big rv d1">Projects we <span class="yi">represent.</span></h2>
@@ -285,7 +290,7 @@ footer a:hover{color:var(--y)}
 
 <!-- 8 PARTNERS -->
 <section class="scene" id="partners" style="min-height:80vh">
-  <div class="bg" style="background-image:url('spazio-11.jpg');background-position:center 20%"></div>
+  <div class="bg" style="background-image:url('bg-11.jpg');background-position:center 20%"></div>
   <div class="in-wrap center">
     <span class="eyebrow dim rv">Official Associate &amp; Partner</span>
     <h2 class="big rv d1">Building the <span class="yi">future</span><br>of Kozhikode.</h2>
@@ -295,7 +300,7 @@ footer a:hover{color:var(--y)}
 
 <!-- 9 INSTAGRAM -->
 <section class="scene darker" id="instagram" style="min-height:auto">
-  <div class="bg" style="background-image:url('spazio-10.jpg');background-position:center 10%"></div>
+  <div class="bg" style="background-image:url('bg-10.jpg');background-position:center 10%"></div>
   <div class="in-wrap center">
     <span class="eyebrow rv">Follow the journey</span>
     <h2 class="big rv d1 handle">@spazio_<wbr><span class="y">properties</span></h2>
@@ -313,7 +318,7 @@ footer a:hover{color:var(--y)}
 
 <!-- 10 CTA -->
 <section class="scene">
-  <div class="bg" style="background-image:url('spazio-11.jpg');background-position:center 35%"></div>
+  <div class="bg" style="background-image:url('bg-11.jpg');background-position:center 35%"></div>
   <div class="in-wrap center">
     <span class="eyebrow rv">Selling?</span>
     <h2 class="big rv d1">Our buyer list is <span class="y">ready.</span><br>Now we need <span class="ul">your property.</span></h2>
@@ -327,7 +332,7 @@ footer a:hover{color:var(--y)}
 
 <!-- 11 CONTACT -->
 <section class="scene darker" id="contact">
-  <div class="bg" style="background-image:url('spazio-12.jpg');background-position:center 20%"></div>
+  <div class="bg" style="background-image:url('bg-12.jpg');background-position:center 20%"></div>
   <div class="in-wrap">
     <div class="contact-grid">
       <div>
@@ -362,7 +367,7 @@ footer a:hover{color:var(--y)}
       </form>
     </div>
     <footer>
-      <span>© <span id="yr"></span> Spazio Properties · Kozhikode</span>
+      <span style="display:flex;align-items:center;gap:14px"><img src="logo-mark-white.png" alt="" style="height:26px;width:auto">© <span id="yr"></span> Spazio Properties · Kozhikode</span>
       <span><a href="#services">Services</a> &nbsp;·&nbsp; <a href="#projects">Projects</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/spazio_properties/" target="_blank">Instagram</a></span>
     </footer>
   </div>
