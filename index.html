@@ -114,10 +114,37 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--y)}
 textarea{min-height:110px;resize:vertical}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 
-footer{position:relative;z-index:2;padding:40px 90px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+footer{position:relative;z-index:2;margin-top:50px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
 footer a:hover{color:var(--y)}
 .wa{position:fixed;left:30px;bottom:30px;z-index:50;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.45);transition:.3s}
 .wa:hover{transform:scale(1.08)}
+
+
+/* ===== horizontal mode (computers & tablets) ===== */
+.progress{display:none}
+@media(min-width:900px){
+  html,body{height:100%;overflow:hidden}
+  .progress{display:block;position:fixed;left:0;bottom:0;height:3px;width:0;background:var(--y);z-index:60;box-shadow:0 0 12px var(--y);transition:width .15s linear}
+  #track{position:fixed;inset:0;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior:none}
+  #track::-webkit-scrollbar,#track .scene::-webkit-scrollbar{display:none}
+  #track .scene{flex:0 0 100vw;width:100vw;height:100vh;min-height:0!important;align-items:flex-start;overflow-x:hidden;overflow-y:auto;scrollbar-width:none;scroll-snap-align:start;padding:88px 0 76px;background:var(--ink)}
+  #track .scene > .in-wrap{margin:auto}
+  #track .bg{transform:none!important;transition:none}
+  .dots{left:50%;right:auto;top:auto;bottom:22px;transform:translateX(-50%);flex-direction:row;gap:16px;padding:12px 20px}
+  .dots a::after{left:50%;right:auto;top:auto;bottom:22px;transform:translateX(-50%)}
+  .hint{bottom:80px}
+  .hint::after{height:1px;width:60px;background:linear-gradient(90deg,var(--y),transparent);animation:slide 1.8s infinite}
+  .svc{gap:26px 90px;margin-top:28px}
+  #services .big{font-size:clamp(34px,5.4vw,78px)}
+  footer{margin-top:26px}
+  .proj{margin:40px auto 0;max-width:1060px}
+  .pc{aspect-ratio:4/5}
+  .ci{padding:11px 0}
+  #contact .big{font-size:clamp(34px,4.6vw,64px)}
+  .btns{margin-top:32px}
+  .wa{bottom:24px}
+}
+@keyframes slide{0%{transform:scaleX(0);transform-origin:left}50%{transform:scaleX(1);transform-origin:left}51%{transform-origin:right}100%{transform:scaleX(0);transform-origin:right}}
 
 @media(max-width:1000px){
   .proj{grid-template-columns:1fr 1fr}
@@ -134,7 +161,6 @@ footer a:hover{color:var(--y)}
   .row2{grid-template-columns:1fr}
   .right{text-align:left}.right .lead,.right .rule{margin-left:0}
   form{padding:26px}
-  footer{padding:30px 22px}
   .wa{left:auto;right:18px;bottom:18px}
   .eyebrow{letter-spacing:.35em}
   .handle{font-size:clamp(28px,8.5vw,44px);overflow-wrap:anywhere}
@@ -162,6 +188,9 @@ footer a:hover{color:var(--y)}
   <a href="#contact" data-label="Contact"></a>
 </nav>
 
+<div class="progress" id="progress"></div>
+<main id="track">
+
 <!-- 1 HERO -->
 <section class="scene" id="hero">
   <div class="bg" style="background-image:url('spazio-12.jpg');background-position:center 40%"></div>
@@ -169,7 +198,7 @@ footer a:hover{color:var(--y)}
     <span class="eyebrow rv">Premium Properties</span>
     <h1 class="mega rv d1" id="heroTitle">Spazio<br>Properties</h1>
   </div>
-  <div class="hint">Scroll to explore</div>
+  <div class="hint">Scroll to explore <span class="arrow">→</span></div>
 </section>
 
 <!-- 2 PROMISE -->
@@ -217,7 +246,7 @@ footer a:hover{color:var(--y)}
   <div class="bg" style="background-image:url('spazio-12.jpg');background-position:center 55%"></div>
   <div class="in-wrap center">
     <span class="eyebrow rv">What We Do</span>
-    <h2 class="mega rv d1" style="font-size:clamp(50px,9vw,130px)">Complete<br>property care.</h2>
+    <h2 class="big rv d1">Complete<br>property care.</h2>
     <div class="svc">
       <div class="rv d1"><div class="n">01</div><h3>Property Sales</h3><p>Flats, villas, plots and commercial spaces in prime Kozhikode locations, matched to your budget and needs.</p></div>
       <div class="rv d2"><div class="n">02</div><h3>Sell Your Property</h3><p>Our buyer list is ready. Share your location and expected price, and we'll bring you genuine, screened buyers.</p></div>
@@ -332,13 +361,16 @@ footer a:hover{color:var(--y)}
         <button class="btn btn-y" type="submit" style="width:100%;justify-content:center">Send via WhatsApp →</button>
       </form>
     </div>
+    <footer>
+      <span>© <span id="yr"></span> Spazio Properties · Kozhikode</span>
+      <span><a href="#services">Services</a> &nbsp;·&nbsp; <a href="#projects">Projects</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/spazio_properties/" target="_blank">Instagram</a></span>
+    </footer>
   </div>
 </section>
 
-<footer>
-  <span>© <span id="yr"></span> Spazio Properties · Kozhikode</span>
-  <span><a href="#services">Services</a> &nbsp;·&nbsp; <a href="#projects">Projects</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/spazio_properties/" target="_blank">Instagram</a></span>
-</footer>
+</main>
+
+
 
 <a class="wa" href="https://wa.me/919995317755" target="_blank" aria-label="Chat on WhatsApp">
   <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
@@ -346,32 +378,70 @@ footer a:hover{color:var(--y)}
 
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
-
-// reveal scenes
-const scenes=document.querySelectorAll('.scene');
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.25});
-scenes.forEach(s=>io.observe(s));
-document.getElementById('hero').classList.add('in');
-
-// dot navigator
-const dots=[...document.querySelectorAll('#dots a')];
-const targets=dots.map(d=>document.querySelector(d.getAttribute('href')));
-function setDot(){
-  const mid=innerHeight*.45;let idx=0;
-  targets.forEach((t,i)=>{if(t&&t.getBoundingClientRect().top<=mid)idx=i});
-  dots.forEach((d,i)=>d.classList.toggle('on',i===idx));
-}
-
-// hero: scale up and fade as you scroll (like the reference "scroll to scale")
+const track=document.getElementById('track');
+const panels=[...track.querySelectorAll('.scene')];
+const H=()=>matchMedia('(min-width:900px)').matches;   // horizontal on computers/tablets, vertical on phones
+const W=()=>track.clientWidth;
+const cur=()=>H()?Math.round(track.scrollLeft/W()):0;
 const ht=document.getElementById('heroTitle');
-function heroFx(){
-  if(innerWidth<720){ht.style.opacity=String(1-Math.min(scrollY/innerHeight,1));return}
-  const p=Math.min(scrollY/innerHeight,1);
-  ht.style.transform='scale('+(1+p*.6)+')';
-  ht.style.opacity=String(1-p*1.1);
+const bar=document.getElementById('progress');
+const dots=[...document.querySelectorAll('#dots a')];
+const dIdx=dots.map(d=>panels.indexOf(document.querySelector(d.getAttribute('href'))));
+if(!H())document.querySelector('.hint .arrow').textContent='↓';
+
+// reveal panels as they arrive
+let io;
+function watch(){
+  if(io)io.disconnect();
+  io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{root:H()?track:null,threshold:H()?.35:.25});
+  panels.forEach(p=>io.observe(p));
 }
-addEventListener('scroll',()=>{setDot();heroFx()},{passive:true});
-setDot();
+watch();panels[0].classList.add('in');
+
+// one panel per wheel step (horizontal mode)
+let lock=false;
+function go(i){
+  i=Math.max(0,Math.min(panels.length-1,i));
+  if(!H()){panels[i].scrollIntoView({behavior:'smooth'});return}
+  lock=true;track.scrollTo({left:i*W(),behavior:'smooth'});
+  setTimeout(()=>lock=false,850);
+}
+track.addEventListener('wheel',e=>{
+  if(!H()||Math.abs(e.deltaX)>Math.abs(e.deltaY))return;    // phones, or sideways trackpad swipe: native
+  const p=panels[cur()];
+  const canDown=p.scrollTop+p.clientHeight<p.scrollHeight-12,canUp=p.scrollTop>12;
+  if((e.deltaY>0&&canDown)||(e.deltaY<0&&canUp))return;     // let a tall panel scroll first
+  e.preventDefault();
+  if(lock||Math.abs(e.deltaY)<4)return;
+  go(cur()+(e.deltaY>0?1:-1));
+},{passive:false});
+addEventListener('keydown',e=>{
+  if(!H()||/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))return;
+  if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();go(cur()+1)}
+  if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(cur()-1)}
+  if(e.key==='Home')go(0);if(e.key==='End')go(panels.length-1);
+});
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  const i=panels.indexOf(document.querySelector(a.getAttribute('href')));
+  if(i>-1){e.preventDefault();go(i)}
+}));
+
+// dots, progress bar, hero zoom
+function onMove(){
+  if(H()){
+    const c=cur();let on=0;dIdx.forEach((pi,i)=>{if(pi<=c)on=i});
+    dots.forEach((d,i)=>d.classList.toggle('on',i===on));
+    bar.style.width=(track.scrollLeft/(track.scrollWidth-W())*100)+'%';
+    const p=Math.min(track.scrollLeft/W(),1);
+    ht.style.transform='scale('+(1+p*.6)+')';ht.style.opacity=String(1-p*1.1);
+  }else{
+    ht.style.transform='none';ht.style.opacity=String(1-Math.min(scrollY/innerHeight,1));
+  }
+}
+track.addEventListener('scroll',onMove,{passive:true});
+addEventListener('scroll',onMove,{passive:true});onMove();
+let wasH=H();
+addEventListener('resize',()=>{if(H()!==wasH){wasH=H();watch()}if(H())track.scrollLeft=cur()*W();onMove()});
 
 // enquiry form -> WhatsApp
 document.getElementById('enq').onsubmit=e=>{
