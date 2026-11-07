@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spazio Properties | Premium Properties, Trusted Guidance — Kozhikode</title>
+<meta name="description" content="Spazio Properties — property sales and property management in Kozhikode (Calicut), Kerala. Official associate of SOBHA Bellevue, Sowparnika Florenzza, FEZCO Fiora and One Infra.">
+<meta property="og:title" content="Spazio Properties | Kozhikode">
+<meta property="og:description" content="Premium properties, trusted guidance. Finding spaces that feel right.">
+<meta property="og:image" content="spazio-14.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--y:#f5c542;--y2:#ffd86b;--ink:#0a0a0b;--text:#f4f2ee;--muted:rgba(244,242,238,.72);--line:rgba(255,255,255,.14)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--ink);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ===== fixed chrome ===== */
+.brand{position:fixed;top:28px;left:36px;z-index:50;display:flex;align-items:center;gap:12px}
+.brand-mark{width:50px;height:50px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.brand-txt b{display:block;font-weight:800;font-size:17px;letter-spacing:.22em;line-height:1}
+.brand-txt span{font-size:9px;letter-spacing:.45em;color:var(--muted)}
+.talk{position:fixed;top:32px;right:36px;z-index:50;padding:12px 22px;border-radius:40px;border:1px solid var(--line);background:rgba(10,10,11,.35);backdrop-filter:blur(10px);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:.3s}
+.talk:hover{background:var(--y);color:#111;border-color:var(--y)}
+.dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:14px;padding:18px 10px;border-radius:40px;background:rgba(30,30,34,.55);backdrop-filter:blur(10px);border:1px solid var(--line)}
+.dots a{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);transition:.3s;position:relative}
+.dots a.on{background:var(--y);box-shadow:0 0 12px var(--y);transform:scale(1.35)}
+.dots a::after{content:attr(data-label);position:absolute;right:22px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:10px;letter-spacing:.25em;text-transform:uppercase;opacity:0;transition:.25s;pointer-events:none;color:var(--text)}
+.dots a:hover::after{opacity:1}
+
+/* ===== scenes ===== */
+.scene{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:120px 0}
+.bg{position:absolute;inset:-4%;background-size:cover;background-position:center;transform:scale(1.08);transition:transform 8s ease-out;will-change:transform;filter:saturate(.9)}
+.scene.in .bg{transform:scale(1)}
+.scene::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,10,11,.55),rgba(10,10,11,.62) 60%,rgba(10,10,11,.85))}
+.scene.darker::before{background:linear-gradient(180deg,rgba(10,10,11,.75),rgba(10,10,11,.82))}
+.scene > .in-wrap{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;padding:0 90px}
+.center{text-align:center}
+.right{text-align:right}
+
+.eyebrow{display:block;font-weight:800;font-size:clamp(12px,1.4vw,17px);letter-spacing:.55em;text-transform:uppercase;color:var(--y);margin-bottom:22px;padding-left:.55em}
+.eyebrow.dim{color:rgba(255,255,255,.75)}
+.mega{font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:-.035em;font-size:clamp(56px,11vw,168px)}
+.big{font-weight:900;text-transform:uppercase;line-height:1.02;letter-spacing:-.02em;font-size:clamp(38px,6.4vw,92px)}
+.y{color:var(--y)}
+.yi{color:var(--y);font-style:italic}
+.ul{text-decoration:underline;text-decoration-color:var(--y);text-decoration-thickness:.07em;text-underline-offset:.16em}
+.lead{max-width:520px;font-size:clamp(14px,1.4vw,17px);line-height:1.7;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:30px}
+.right .lead{margin-left:auto}
+.center .lead{margin-left:auto;margin-right:auto}
+.rule{width:96px;height:3px;background:var(--y);margin:30px 0 0}
+.right .rule{margin-left:auto}
+.pill{display:inline-block;margin-top:34px;padding:14px 30px;border-radius:40px;background:rgba(40,38,36,.75);border:1px solid var(--line);font-weight:700;font-size:13px;letter-spacing:.42em;text-transform:uppercase}
+.hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;font-size:10px;letter-spacing:.5em;color:rgba(255,255,255,.55);text-transform:uppercase;text-align:center}
+.hint::after{content:"";display:block;width:1px;height:42px;margin:12px auto 0;background:linear-gradient(var(--y),transparent);animation:drip 1.8s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* hero scale-on-scroll */
+#hero .mega{will-change:transform,opacity}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(50px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}.rv.d4{transition-delay:.48s}
+.in .rv{opacity:1;transform:none}
+
+/* services grid */
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:70px 90px;margin-top:70px;text-align:left}
+.svc .n{font-weight:900;font-size:22px;color:var(--y);letter-spacing:.1em}
+.svc h3{font-weight:800;font-size:clamp(22px,2.4vw,32px);text-transform:uppercase;letter-spacing:-.01em;margin:10px 0 14px}
+.svc p{font-size:14px;line-height:1.75;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+/* projects */
+.proj{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:60px;text-align:left}
+.pc{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5.4;background:#1a1a1c;border:1px solid var(--line);display:block}
+.pc img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.pc:hover img{transform:scale(1.06)}
+.pc .cap{position:absolute;inset:auto 0 0 0;padding:70px 20px 20px;background:linear-gradient(transparent,rgba(0,0,0,.92))}
+.pc .tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:#111;background:var(--y);padding:6px 10px;border-radius:30px;margin-bottom:10px}
+.pc h3{font-weight:800;font-size:19px;text-transform:uppercase;letter-spacing:.01em}
+.pc small{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.pc .go{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.55);display:grid;place-items:center;font-size:18px;transition:.3s}
+.pc:hover .go{background:var(--y);color:#111}
+
+.partners{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 56px;margin-top:56px}
+.partners span{font-weight:800;font-size:clamp(18px,2.2vw,28px);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+
+/* instagram */
+.ig{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:50px}
+.ig a{aspect-ratio:4/5;overflow:hidden;border-radius:12px;background:#1a1a1c}
+.ig img{width:100%;height:100%;object-fit:cover;transition:.6s;filter:grayscale(.25)}
+.ig a:hover img{transform:scale(1.07);filter:none}
+
+.btn{display:inline-flex;align-items:center;gap:12px;padding:18px 34px;border-radius:50px;font-weight:800;font-size:13px;letter-spacing:.25em;text-transform:uppercase;transition:.3s;border:none;cursor:pointer;font-family:inherit}
+.btn-y{background:var(--y);color:#111}
+.btn-y:hover{background:var(--y2);transform:translateY(-3px);box-shadow:0 14px 34px rgba(245,197,66,.3)}
+.btn-o{border:1px solid rgba(255,255,255,.4);color:var(--text);background:transparent}
+.btn-o:hover{border-color:var(--y);color:var(--y)}
+.btns{display:flex;gap:16px;flex-wrap:wrap;margin-top:44px}
+.center .btns{justify-content:center}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;text-align:left}
+.ci{display:flex;gap:18px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+.ci small{display:block;font-size:11px;letter-spacing:.35em;color:var(--y);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.ci b{font-size:clamp(18px,2vw,24px);font-weight:700;letter-spacing:.02em}
+form{background:rgba(20,20,22,.7);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:22px;padding:40px}
+label{display:block;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:600}
+input,select,textarea{width:100%;background:rgba(0,0,0,.4);border:1px solid var(--line);border-radius:10px;padding:14px 16px;color:var(--text);font:inherit;font-size:15px;margin-bottom:20px}
+select option{background:#111}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--y)}
+textarea{min-height:110px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+footer{position:relative;z-index:2;padding:40px 90px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+footer a:hover{color:var(--y)}
+.wa{position:fixed;left:30px;bottom:30px;z-index:50;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.45);transition:.3s}
+.wa:hover{transform:scale(1.08)}
+
+@media(max-width:1000px){
+  .proj{grid-template-columns:1fr 1fr}
+  .ig{grid-template-columns:repeat(3,1fr)}
+  .contact-grid{grid-template-columns:1fr;gap:50px}
+}
+@media(max-width:720px){
+  .scene > .in-wrap{padding:0 22px}
+  .brand{top:18px;left:18px}.brand-mark{width:42px;height:42px}
+  .talk{top:22px;right:18px;padding:10px 16px;font-size:10px}
+  .dots{display:none}
+  .svc{grid-template-columns:1fr;gap:40px}
+  .ig{grid-template-columns:repeat(2,1fr)}
+  .row2{grid-template-columns:1fr}
+  .right{text-align:left}.right .lead,.right .rule{margin-left:0}
+  form{padding:26px}
+  footer{padding:30px 22px}
+  .wa{left:auto;right:18px;bottom:18px}
+  .eyebrow{letter-spacing:.35em}
+}
+</style>
+</head>
+<body>
+
+<a href="#hero" class="brand" aria-label="Spazio Properties home">
+  <!-- Real logo: save it as logo.png and replace this SVG with <img src="logo.png" alt="Spazio Properties" width="36"> -->
+  <span class="brand-mark"><svg viewBox="0 0 100 100" width="32" height="32"><rect x="20" y="10" width="17" height="82" fill="#111"/><path d="M28 19h26a22 22 0 010 44H44" fill="none" stroke="#111" stroke-width="17"/><path d="M58 33c-6-4-14-1-13 5 1 7 14 5 14 12" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/></svg></span>
+  <span class="brand-txt"><b>SPAZIO</b><span>PROPERTIES</span></span>
+</a>
+<a href="#contact" class="talk">Let's talk</a>
+
+<nav class="dots" id="dots" aria-label="Sections">
+  <a href="#hero" data-label="Home"></a>
+  <a href="#promise" data-label="Our promise"></a>
+  <a href="#about" data-label="About us"></a>
+  <a href="#services" data-label="What we do"></a>
+  <a href="#projects" data-label="Projects"></a>
+  <a href="#partners" data-label="Partners"></a>
+  <a href="#instagram" data-label="Instagram"></a>
+  <a href="#contact" data-label="Contact"></a>
+</nav>
+
+<!-- 1 HERO -->
+<section class="scene" id="hero">
+  <div class="bg" style="background-image:url('spazio-12.jpg');background-position:center 40%"></div>
+  <div class="in-wrap center">
+    <span class="eyebrow rv">Premium Properties</span>
+    <h1 class="mega rv d1" id="heroTitle">Spazio<br>Properties</h1>
+  </div>
+  <div class="hint">Scroll to explore</div>
+</section>
+
+<!-- 2 PROMISE -->
+<section class="scene" id="promise">
+  <div class="bg" style="background-image:url('spazio-10.jpg');background-position:center 35%"></div>
+  <div class="in-wrap center">
+    <span class="eyebrow dim rv">Our Promise</span>
+    <h2 class="big rv d1">Others sell <span class="yi">property</span>.<br>We find spaces that <span class="ul">feel right.</span></h2>
+  </div>
+</section>
+
+<!-- 3 TAGLINE -->
+<section class="scene">
+  <div class="bg" style="background-image:url('spazio-11.jpg');background-position:center 45%"></div>
+  <div class="in-wrap center">
+    <h2 class="big rv">Trusted guidance.</h2>
+    <h2 class="big y rv d1">Prime locations.</h2>
+    <span class="pill rv d2">Kozhikode · Kerala</span>
+  </div>
+</section>
+
+<!-- 4 ABOUT -->
+<section class="scene" id="about">
+  <div class="bg" style="background-image:url('spazio-12.jpg');background-position:center 48%"></div>
+  <div class="in-wrap">
+    <span class="eyebrow rv">About Us</span>
+    <h2 class="mega rv d1" style="font-size:clamp(50px,9vw,130px)">Beyond the<br>listing.</h2>
+    <p class="lead rv d2">Spazio Properties is a Kozhikode real estate firm for buying, selling and managing property. We bridge the gap between genuine buyers and sellers with trust, transparency and top-tier locations.</p>
+  </div>
+</section>
+
+<!-- 5 VALUES -->
+<section class="scene">
+  <div class="bg" style="background-image:url('spazio-11.jpg');background-position:center 15%"></div>
+  <div class="in-wrap right">
+    <h2 class="big rv">Verified buyers.</h2>
+    <h2 class="big yi rv d1">Trusted owners.</h2>
+    <div class="rule rv d2"></div>
+    <p class="lead rv d3">Plots, villas, apartments, commercial spaces and buildings. Whether you're buying, selling or investing, we guide you every step of the way.</p>
+  </div>
+</section>
+
+<!-- 6 SERVICES -->
+<section class="scene darker" id="services">
+  <div class="bg" style="background-image:url('spazio-12.jpg');background-position:center 55%"></div>
+  <div class="in-wrap center">
+    <span class="eyebrow rv">What We Do</span>
+    <h2 class="mega rv d1" style="font-size:clamp(50px,9vw,130px)">Complete<br>property care.</h2>
+    <div class="svc">
+      <div class="rv d1"><div class="n">01</div><h3>Property Sales</h3><p>Flats, villas, plots and commercial spaces in prime Kozhikode locations, matched to your budget and needs.</p></div>
+      <div class="rv d2"><div class="n">02</div><h3>Sell Your Property</h3><p>Our buyer list is ready. Share your location and expected price, and we'll bring you genuine, screened buyers.</p></div>
+      <div class="rv d3"><div class="n">03</div><h3>Property Management</h3><p>For NRIs and busy owners: tenant finding, rent collection, maintenance and regular updates.</p></div>
+      <div class="rv d4"><div class="n">04</div><h3>Investment Guidance</h3><p>Expanding your portfolio or entering commercial real estate? Get honest advice on where and when to invest.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 PROJECTS -->
+<section class="scene darker" id="projects">
+  <div class="bg" style="background-image:url('spazio-12.jpg');background-position:center 25%"></div>
+  <div class="in-wrap center">
+    <span class="eyebrow rv">Featured Projects</span>
+    <h2 class="big rv d1">Projects we <span class="yi">represent.</span></h2>
+    <div class="proj">
+      <a class="pc rv d1" target="_blank" href="https://wa.me/919995317755?text=Hi%20Spazio%2C%20I'm%20interested%20in%20Bellevue%20by%20SOBHA">
+        <img src="spazio-14.jpg" alt="Bellevue by SOBHA" loading="lazy"><span class="go">↗</span>
+        <div class="cap"><span class="tag">Official Associate</span><h3>Bellevue by SOBHA</h3><small>Riverside · From ₹3.5 Cr</small></div>
+      </a>
+      <a class="pc rv d2" target="_blank" href="https://wa.me/919995317755?text=Hi%20Spazio%2C%20I'm%20interested%20in%20Sowparnika%20Florenzza">
+        <img src="spazio-15.jpg" alt="Sowparnika Florenzza" loading="lazy"><span class="go">↗</span>
+        <div class="cap"><span class="tag">Official Associate</span><h3>Sowparnika Florenzza</h3><small>Kozhikode · Enquire</small></div>
+      </a>
+      <a class="pc rv d3" target="_blank" href="https://wa.me/919995317755?text=Hi%20Spazio%2C%20I'm%20interested%20in%20Fiora%20by%20FEZCO">
+        <img src="spazio-16.jpg" alt="Fiora by FEZCO" loading="lazy"><span class="go">↗</span>
+        <div class="cap"><span class="tag">Partner Project</span><h3>Fiora by FEZCO</h3><small>Kozhikode · Enquire</small></div>
+      </a>
+      <a class="pc rv d4" target="_blank" href="https://wa.me/919995317755?text=Hi%20Spazio%2C%20I'm%20interested%20in%20One%20City%20by%20One%20Infra">
+        <img src="spazio-13.jpg" alt="One City by One Infra" loading="lazy"><span class="go">↗</span>
+        <div class="cap"><span class="tag">Trusted Partner</span><h3>One City · One Infra</h3><small>Kozhikode · Enquire</small></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 8 PARTNERS -->
+<section class="scene" id="partners" style="min-height:80vh">
+  <div class="bg" style="background-image:url('spazio-11.jpg');background-position:center 20%"></div>
+  <div class="in-wrap center">
+    <span class="eyebrow dim rv">Official Associate &amp; Partner</span>
+    <h2 class="big rv d1">Building the <span class="yi">future</span><br>of Kozhikode.</h2>
+    <div class="partners rv d2"><span>SOBHA</span><span>Sowparnika</span><span>FEZCO</span><span>One Infra</span><span>Tekton</span></div>
+  </div>
+</section>
+
+<!-- 9 INSTAGRAM -->
+<section class="scene darker" id="instagram" style="min-height:auto">
+  <div class="bg" style="background-image:url('spazio-10.jpg');background-position:center 10%"></div>
+  <div class="in-wrap center">
+    <span class="eyebrow rv">Follow the journey</span>
+    <h2 class="big rv d1">@spazio_<span class="y">properties</span></h2>
+    <div class="ig rv d2">
+      <a href="https://www.instagram.com/spazio_properties/" target="_blank"><img src="spazio-02.jpg" alt="Spazio Properties post" loading="lazy"></a>
+      <a href="https://www.instagram.com/spazio_properties/" target="_blank"><img src="spazio-05.jpg" alt="Spazio Properties post" loading="lazy"></a>
+      <a href="https://www.instagram.com/spazio_properties/" target="_blank"><img src="spazio-06.jpg" alt="Spazio Properties post" loading="lazy"></a>
+      <a href="https://www.instagram.com/spazio_properties/" target="_blank"><img src="spazio-09.jpg" alt="Spazio Properties post" loading="lazy"></a>
+      <a href="https://www.instagram.com/spazio_properties/" target="_blank"><img src="spazio-17.jpg" alt="Spazio Properties post" loading="lazy"></a>
+      <a href="https://www.instagram.com/spazio_properties/" target="_blank"><img src="spazio-18.jpg" alt="Spazio Properties post" loading="lazy"></a>
+    </div>
+    <div class="btns rv d3"><a class="btn btn-o" href="https://www.instagram.com/spazio_properties/" target="_blank">Follow on Instagram →</a></div>
+  </div>
+</section>
+
+<!-- 10 CTA -->
+<section class="scene">
+  <div class="bg" style="background-image:url('spazio-11.jpg');background-position:center 35%"></div>
+  <div class="in-wrap center">
+    <span class="eyebrow rv">Selling?</span>
+    <h2 class="big rv d1">Our buyer list is <span class="y">ready.</span><br>Now we need <span class="ul">your property.</span></h2>
+    <p class="lead rv d2">Have a flat, villa or plot in a prime Kozhikode location? Send us the location and expected price.</p>
+    <div class="btns rv d3">
+      <a class="btn btn-y" target="_blank" href="https://wa.me/919995317755?text=Hi%20Spazio%2C%20I%20want%20to%20sell%20my%20property">WhatsApp us →</a>
+      <a class="btn btn-o" href="tel:+919995317755">Call +91 99953 17755</a>
+    </div>
+  </div>
+</section>
+
+<!-- 11 CONTACT -->
+<section class="scene darker" id="contact">
+  <div class="bg" style="background-image:url('spazio-12.jpg');background-position:center 20%"></div>
+  <div class="in-wrap">
+    <div class="contact-grid">
+      <div>
+        <span class="eyebrow rv">Contact</span>
+        <h2 class="big rv d1">Let's find<br>your <span class="yi">space.</span></h2>
+        <div class="rv d2" style="margin-top:36px">
+          <a class="ci" href="tel:+919995317755"><div><small>Call</small><b>+91 99953 17755</b></div></a>
+          <a class="ci" href="https://wa.me/919995317755" target="_blank"><div><small>WhatsApp</small><b>+91 99953 17755</b></div></a>
+          <a class="ci" href="https://www.instagram.com/spazio_properties/" target="_blank"><div><small>Instagram</small><b>@spazio_properties</b></div></a>
+          <div class="ci"><div><small>Location</small><b>Kozhikode, Kerala</b></div></div>
+        </div>
+      </div>
+      <form id="enq" class="rv d2">
+        <div class="row2">
+          <div><label for="f-name">Name</label><input id="f-name" required></div>
+          <div><label for="f-phone">Phone</label><input id="f-phone" type="tel" required></div>
+        </div>
+        <label for="f-type">I'm interested in</label>
+        <select id="f-type">
+          <option>Buying a property</option>
+          <option>Selling my property</option>
+          <option>Property management</option>
+          <option>Investment advice</option>
+          <option>Bellevue by SOBHA</option>
+          <option>Sowparnika Florenzza</option>
+          <option>Fiora by FEZCO</option>
+          <option>One City by One Infra</option>
+        </select>
+        <label for="f-msg">Message</label>
+        <textarea id="f-msg" placeholder="Location, budget, type of property…"></textarea>
+        <button class="btn btn-y" type="submit" style="width:100%;justify-content:center">Send via WhatsApp →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© <span id="yr"></span> Spazio Properties · Kozhikode</span>
+  <span><a href="#services">Services</a> &nbsp;·&nbsp; <a href="#projects">Projects</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/spazio_properties/" target="_blank">Instagram</a></span>
+</footer>
+
+<a class="wa" href="https://wa.me/919995317755" target="_blank" aria-label="Chat on WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+</a>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+// reveal scenes
+const scenes=document.querySelectorAll('.scene');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.25});
+scenes.forEach(s=>io.observe(s));
+document.getElementById('hero').classList.add('in');
+
+// dot navigator
+const dots=[...document.querySelectorAll('#dots a')];
+const targets=dots.map(d=>document.querySelector(d.getAttribute('href')));
+function setDot(){
+  const mid=innerHeight*.45;let idx=0;
+  targets.forEach((t,i)=>{if(t&&t.getBoundingClientRect().top<=mid)idx=i});
+  dots.forEach((d,i)=>d.classList.toggle('on',i===idx));
+}
+
+// hero: scale up and fade as you scroll (like the reference "scroll to scale")
+const ht=document.getElementById('heroTitle');
+function heroFx(){
+  const p=Math.min(scrollY/innerHeight,1);
+  ht.style.transform='scale('+(1+p*.6)+')';
+  ht.style.opacity=String(1-p*1.1);
+}
+addEventListener('scroll',()=>{setDot();heroFx()},{passive:true});
+setDot();
+
+// enquiry form -> WhatsApp
+document.getElementById('enq').onsubmit=e=>{
+  e.preventDefault();
+  const v=id=>encodeURIComponent(document.getElementById(id).value);
+  const t='Hi Spazio Properties,%0AName: '+v('f-name')+'%0APhone: '+v('f-phone')+'%0AInterested in: '+v('f-type')+'%0A'+v('f-msg');
+  window.open('https://wa.me/919995317755?text='+t,'_blank');
+};
+</script>
+</body>
+</html>
