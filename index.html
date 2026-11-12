@@ -123,6 +123,11 @@ textarea{min-height:110px;resize:vertical}
 
 footer{position:relative;z-index:2;margin-top:50px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
 footer a:hover{color:var(--y)}
+.foot-r{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.dev{font-size:10px;letter-spacing:.2em;text-transform:none;color:rgba(244,242,238,.45)}
+.dev b{font-weight:600;color:rgba(244,242,238,.7)}
+.dev:hover b{color:var(--y)}
+@media(max-width:720px){.foot-r{align-items:flex-start}}
 .wa{position:fixed;left:30px;bottom:30px;z-index:50;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.45);transition:.3s}
 .wa:hover{transform:scale(1.08)}
 
@@ -527,7 +532,8 @@ body.has-cur .cur,body.has-cur .cur-dot{opacity:1}
     </div>
     <footer>
       <span style="display:flex;align-items:center;gap:14px"><img src="logo-mark-white.png" alt="" style="height:26px;width:auto">© <span id="yr"></span> Spazio Properties · Kozhikode</span>
-      <span><a href="#services">Services</a> &nbsp;·&nbsp; <a href="#projects">Projects</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/spazio_properties/" target="_blank">Instagram</a></span>
+      <span class="foot-r"><span><a href="#services">Services</a> &nbsp;·&nbsp; <a href="#projects">Projects</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/spazio_properties/" target="_blank">Instagram</a></span>
+        <a class="dev" href="https://arshees.com/dotcom/" target="_blank" rel="noopener">Developed by <b>DotCom by Arshees</b></a></span>
     </footer>
   </div>
 </section>
