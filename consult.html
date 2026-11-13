@@ -57,6 +57,12 @@
   .note{margin-top:18px;text-align:center;color:var(--muted);font-size:14px}
   .note a{color:var(--y);font-weight:700}
   .err{display:none;margin-bottom:18px;padding:14px 16px;border-radius:12px;background:rgba(245,197,66,.12);border:1px solid rgba(245,197,66,.4);color:var(--text);font-size:14px}
+  .team-link{display:block;margin-top:22px;text-align:center;background:none;border:0;width:100%;cursor:pointer;color:var(--muted);font:600 13px "Inter";letter-spacing:.08em}
+  .team-link:hover{color:var(--y)}
+  .team-box{display:none;margin-top:18px;padding:20px;border:1px solid var(--line);border-radius:16px;background:rgba(0,0,0,.3)}
+  .team-box.show{display:block}
+  .btn.ghost{background:transparent;color:var(--y);border:1px solid var(--y)}
+  .btn.ghost:hover{background:rgba(245,197,66,.1)}
   @media (max-width:900px){
     .intro{grid-template-columns:1fr}
     .intro-copy,.intro-side{padding:36px 22px}
@@ -91,6 +97,12 @@
             Join video call
           </button>
         </form>
+        <button type="button" class="team-link" id="teamToggle">🔒 Spazio team sign-in</button>
+        <form class="team-box" id="teamForm">
+          <label for="pass">Team passcode</label>
+          <input id="pass" type="password" autocomplete="current-password" placeholder="Enter team passcode" required>
+          <button class="btn ghost" id="teamBtn" type="submit">Unlock host access</button>
+        </form>
         <ul class="checks">
           <li>Use a phone or laptop with a camera, in a quiet place</li>
           <li>Allow camera and microphone when your browser asks</li>
@@ -118,10 +130,48 @@
 <script>
   const ROOM_URL = 'https://spazioproperties.daily.co/consult';
   const $ = id => document.getElementById(id);
+  // Host token, encrypted with the team passcode (AES-GCM, PBKDF2). Only the passcode unlocks it.
+  const TEAM_LOCK = {"s":"vELQbvjFeAccyvOuvHzvXA==","i":"RMsAW37rXHTVARMu","c":"LIqQEOZRFgrjBl7CDvMZ+swXAqKpTxzdF/62kGj5DEsd51ErVNsAtOo21tIp2My3nIrFVwPfC/rFDWYz4+rwFHifzL1K60NkDbKpSrDc+ZN1WY6bR6CmlSrLYNUkeSoeS234TWOZyxDdLDlTrNLJAu9YtP38Qg9F/bZAe+z4AnJDpv2sWXaKf5LA6Cgi43wo389JNS66LK1E1SeqGJzZeOc1BJMqDiG79Zv2cHC0LQfFWAO03uPcv/IrMt9+80Fr07Bj2Y4cPi1vHsVRYvVXTS0vxD7Hf07c0GeRvCfRrN/D5yhGQvwQlLNsSAAE9WWYkA=="};
   const params = new URLSearchParams(location.search);
-  const hostToken = params.get('host');
-  const isHost = !!hostToken;
+  let hostToken = params.get('host');
+  try { if (!hostToken) hostToken = sessionStorage.getItem('spazioHost'); } catch (e) {}
+  let isHost = !!hostToken;
   const nameInput = $('name'), err = $('err');
+
+  const b64 = s => Uint8Array.from(atob(s), ch => ch.charCodeAt(0));
+  async function unlock(pass) {
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveKey']);
+    const key = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64(TEAM_LOCK.s), iterations: 250000, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+    const out = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(TEAM_LOCK.i) }, key, b64(TEAM_LOCK.c));
+    return new TextDecoder().decode(out);
+  }
+  function hostMode() {
+    $('roleTag').textContent = 'Spazio team login';
+    $('title').innerHTML = 'Start <em>video calls</em>';
+    $('sub').textContent = 'You join as the host. Clients wait in the waiting room until you admit them.';
+    nameInput.value = 'Spazio Properties';
+    $('noBook').style.display = 'none';
+    $('teamToggle').style.display = 'none';
+    $('teamForm').classList.remove('show');
+  }
+  if (!TEAM_LOCK) $('teamToggle').style.display = 'none';
+  $('teamToggle').addEventListener('click', () => { $('teamForm').classList.toggle('show'); $('pass').focus(); });
+  $('teamForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    err.style.display = 'none';
+    const tb = $('teamBtn'); tb.disabled = true; tb.textContent = 'Checking...';
+    try {
+      hostToken = await unlock($('pass').value);
+      isHost = true;
+      try { sessionStorage.setItem('spazioHost', hostToken); } catch (e2) {}
+      hostMode();
+    } catch (e2) {
+      err.textContent = 'Wrong passcode. Please try again.';
+      err.style.display = 'block';
+    }
+    tb.disabled = false; tb.textContent = 'Unlock host access';
+    $('pass').value = '';
+  });
 
   if (isHost) {
     $('roleTag').textContent = 'Spazio team login';
@@ -129,6 +179,7 @@
     $('sub').textContent = 'You join as the host. Clients wait in the waiting room until you admit them.';
     nameInput.value = 'Spazio Properties';
     $('noBook').style.display = 'none';
+    $('teamToggle').style.display = 'none';
   }
   try { const saved = localStorage.getItem('spazioClientName'); if (saved && !isHost) nameInput.value = saved; } catch (e) {}
 
