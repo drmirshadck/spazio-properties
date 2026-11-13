@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Video Call Room | Spazio Properties</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Same video setup as the DotCom doctor sites (Daily, in-site call with waiting room). -->
+<style>
+  :root{--y:#f5c542;--y2:#ffd86b;--ink:#0a0a0b;--panel:#121214;--text:#f4f2ee;--muted:rgba(244,242,238,.68);--line:rgba(255,255,255,.14)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Inter",system-ui,sans-serif;background:var(--ink);color:var(--text);min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+  body:before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,10,11,.78),rgba(10,10,11,.92)),url('bg-12.jpg') center 40%/cover no-repeat}
+  a{color:inherit;text-decoration:none}
+  header{border-bottom:1px solid var(--line);background:rgba(10,10,11,.6);backdrop-filter:blur(10px)}
+  .nav{max-width:1200px;margin:0 auto;padding:0 24px;height:76px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo-mark{width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center}
+  .logo-mark img{width:22px;height:auto}
+  .logo-word{height:22px;width:auto}
+  .back{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--line);padding:12px 20px;border-radius:40px}
+  .back:hover{border-color:var(--y);color:var(--y)}
+  main{flex:1;max-width:1200px;width:100%;margin:0 auto;padding:28px 24px}
+  .panel{background:rgba(18,18,20,.88);border:1px solid var(--line);border-radius:24px;overflow:hidden;backdrop-filter:blur(10px)}
+  .intro{display:grid;grid-template-columns:1.1fr .9fr;min-height:540px}
+  .intro-copy{padding:56px 48px}
+  .eyebrow{font-size:12px;font-weight:800;letter-spacing:.45em;text-transform:uppercase;color:var(--y)}
+  h1{font-weight:900;text-transform:uppercase;letter-spacing:-.02em;font-size:clamp(32px,4.4vw,52px);line-height:1.02;margin:16px 0 18px}
+  h1 em{font-style:italic;color:var(--y)}
+  p.lead{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:28px}
+  label{display:block;font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  input{width:100%;font:16px "Inter";padding:15px 18px;border:1px solid var(--line);border-radius:12px;margin-bottom:18px;background:rgba(0,0,0,.4);color:var(--text)}
+  input:focus{outline:none;border-color:var(--y)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;font:800 13px "Inter";letter-spacing:.25em;text-transform:uppercase;border-radius:50px;padding:18px 30px;background:var(--y);color:#111;width:100%;transition:.25s}
+  .btn:hover{background:var(--y2)}
+  .btn:disabled{opacity:.6;cursor:wait}
+  .checks{list-style:none;margin-top:28px;display:grid;gap:10px;color:var(--muted);font-size:14px}
+  .checks li{padding-left:28px;position:relative}
+  .checks li:before{content:"✓";position:absolute;left:0;color:var(--y);font-weight:800}
+  .intro-side{background:linear-gradient(160deg,rgba(245,197,66,.14),rgba(245,197,66,.03));border-left:1px solid var(--line);padding:56px 44px;display:flex;flex-direction:column;justify-content:center;gap:24px}
+  .intro-side h2{font-weight:800;font-size:22px;text-transform:uppercase;letter-spacing:.02em}
+  .brandcard{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:18px;padding:16px}
+  .brandcard .logo-mark{width:56px;height:56px;flex:none}
+  .brandcard .logo-mark img{width:28px}
+  .brandcard b{display:block;font-weight:800;letter-spacing:.08em}
+  .brandcard span{font-size:13px;color:var(--muted)}
+  .side-steps{list-style:none;display:grid;gap:16px;counter-reset:s}
+  .side-steps li{padding-left:46px;position:relative;color:var(--muted);line-height:1.5}
+  .side-steps li:before{counter-increment:s;content:"0" counter(s);position:absolute;left:0;top:-2px;font-weight:900;color:var(--y);font-size:18px}
+  .help{font-size:14px;color:var(--muted)}
+  .help a{color:var(--y);font-weight:700}
+  #callWrap{display:none;height:calc(100vh - 76px - 56px);min-height:520px}
+  #callWrap iframe{width:100%;height:100%;border:0}
+  .note{margin-top:18px;text-align:center;color:var(--muted);font-size:14px}
+  .note a{color:var(--y);font-weight:700}
+  .err{display:none;margin-bottom:18px;padding:14px 16px;border-radius:12px;background:rgba(245,197,66,.12);border:1px solid rgba(245,197,66,.4);color:var(--text);font-size:14px}
+  @media (max-width:900px){
+    .intro{grid-template-columns:1fr}
+    .intro-copy,.intro-side{padding:36px 22px}
+    .intro-side{border-left:0;border-top:1px solid var(--line)}
+    main{padding:12px}
+    .logo-word{display:none}
+    #callWrap{height:calc(100vh - 76px - 24px)}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a href="./" class="logo"><span class="logo-mark"><img src="logo-mark.png" alt=""></span><img class="logo-word" src="logo-word-white.png" alt="Spazio Properties"></a>
+    <a href="./" class="back">← Back to website</a>
+  </div>
+</header>
+
+<main>
+  <div class="panel" id="introPanel">
+    <div class="intro">
+      <div class="intro-copy">
+        <span class="eyebrow" id="roleTag">Video consultation</span>
+        <h1 id="title">Join your <em>video call</em></h1>
+        <p class="lead" id="sub">Enter your name and tap join. Our team will let you in at your appointment time. The call stays right here on this page, with no app to install.</p>
+        <div class="err" id="err"></div>
+        <form id="joinForm">
+          <label for="name">Your full name</label>
+          <input id="name" required placeholder="e.g. Fathima Rahman" autocomplete="name">
+          <button class="btn" id="joinBtn" type="submit">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="14" height="12" rx="3"/><path d="M16 10l6-3v10l-6-3"/></svg>
+            Join video call
+          </button>
+        </form>
+        <ul class="checks">
+          <li>Use a phone or laptop with a camera, in a quiet place</li>
+          <li>Allow camera and microphone when your browser asks</li>
+          <li>Keep your budget and preferred locations in mind</li>
+        </ul>
+      </div>
+      <div class="intro-side">
+        <div class="brandcard"><span class="logo-mark"><img src="logo-mark.png" alt=""></span><div><b>SPAZIO PROPERTIES</b><span>Property consultation · Kozhikode</span></div></div>
+        <h2>What happens next</h2>
+        <ol class="side-steps">
+          <li>You check your camera and microphone</li>
+          <li>You wait briefly in the waiting room</li>
+          <li>Our team admits you and the call begins</li>
+        </ol>
+        <p class="help">Trouble joining? WhatsApp <a href="https://wa.me/919995317755" target="_blank" rel="noopener">+91 99953 17755</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="callWrap"></div>
+  <p class="note" id="noBook">Don't have an appointment yet? <a href="./#video">Book a free video call</a></p>
+</main>
+
+<script src="https://unpkg.com/@daily-co/daily-js@0.94.0/dist/daily.js"></script>
+<script>
+  const ROOM_URL = 'https://spazioproperties.daily.co/consult';
+  const $ = id => document.getElementById(id);
+  const params = new URLSearchParams(location.search);
+  const hostToken = params.get('host');
+  const isHost = !!hostToken;
+  const nameInput = $('name'), err = $('err');
+
+  if (isHost) {
+    $('roleTag').textContent = 'Spazio team login';
+    $('title').innerHTML = 'Start <em>video calls</em>';
+    $('sub').textContent = 'You join as the host. Clients wait in the waiting room until you admit them.';
+    nameInput.value = 'Spazio Properties';
+    $('noBook').style.display = 'none';
+  }
+  try { const saved = localStorage.getItem('spazioClientName'); if (saved && !isHost) nameInput.value = saved; } catch (e) {}
+
+  $('joinForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    err.style.display = 'none';
+    const userName = nameInput.value.trim();
+    if (!userName) return;
+    if (!window.DailyIframe) {
+      err.textContent = 'The video room could not load. Please refresh the page, or WhatsApp us.';
+      err.style.display = 'block';
+      return;
+    }
+    try { if (!isHost) localStorage.setItem('spazioClientName', userName); } catch (e) {}
+    const btn = $('joinBtn');
+    btn.disabled = true;
+
+    const wrap = $('callWrap');
+    $('introPanel').style.display = 'none';
+    $('noBook').style.display = 'none';
+    wrap.style.display = 'block';
+    window.scrollTo(0, 0);
+
+    const call = window.DailyIframe.createFrame(wrap, {
+      showLeaveButton: true,
+      showFullscreenButton: true,
+      iframeStyle: { width: '100%', height: '100%', border: '0' },
+      theme: { colors: { accent: '#f5c542', accentText: '#111111', background: '#121214', backgroundAccent: '#1c1c20', baseText: '#f4f2ee', border: '#2b2b30', mainAreaBg: '#0a0a0b', mainAreaBgAccent: '#1c1c20', mainAreaText: '#f4f2ee', supportiveText: '#b8b4ac' } }
+    });
+    call.on('left-meeting', () => { call.destroy(); location.href = './'; });
+    call.on('error', () => {
+      call.destroy();
+      wrap.style.display = 'none';
+      $('introPanel').style.display = 'block';
+      btn.disabled = false;
+      err.textContent = 'Could not connect to the video room. Please check your internet connection and try again, or WhatsApp us.';
+      err.style.display = 'block';
+    });
+    const opts = { url: ROOM_URL, userName };
+    if (isHost) opts.token = hostToken;
+    call.join(opts);
+  });
+</script>
+</body>
+</html>
