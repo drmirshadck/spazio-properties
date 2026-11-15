@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /consult.html
+
+Sitemap: https://www.spazio-properties.com/sitemap.xml
